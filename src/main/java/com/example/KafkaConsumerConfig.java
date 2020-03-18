@@ -30,7 +30,6 @@ public class KafkaConsumerConfig {
     private String schemaRegistryUrl;
 
     @Bean
-    @ConditionalOnMissingBean(name = "kafkaListenerContainerFactory2")
     public ConsumerFactory<String, Payment> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
@@ -42,8 +41,8 @@ public class KafkaConsumerConfig {
         return new DefaultKafkaConsumerFactory<>(props);
     }
 
-    @Bean(name = "kafkaListenerContainerFactory2")
-    public ConcurrentKafkaListenerContainerFactory<String, Payment> kafkaListenerContainerFactory2(
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, Payment> kafkaListenerContainerFactory(
             ConsumerFactory<String, Payment> consumerFactory) {
         ConcurrentKafkaListenerContainerFactory<String, Payment> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);

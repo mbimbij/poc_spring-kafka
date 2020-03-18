@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@EnableKafka
 public class KafkaProducerConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
