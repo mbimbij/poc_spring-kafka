@@ -23,11 +23,18 @@ public class SpringKafkaSandboxApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Payment payment = Payment.newBuilder()
+        Payment payment1 = Payment.newBuilder()
                 .setId(UUID.randomUUID().toString())
                 .setAmount(777.0)
                 .build();
-        System.out.println("sending kafka message " + payment);
-        kafkaTemplate.send("topic1", payment);
+        System.out.println("sending kafka message (topic1) " + payment1);
+        kafkaTemplate.send("topic1", payment1);
+
+        Payment payment2 = Payment.newBuilder()
+                .setId(UUID.randomUUID().toString())
+                .setAmount(888.0)
+                .build();
+        System.out.println("sending kafka message (topic2) " + payment2);
+        kafkaTemplate.send("topic2", payment2);
     }
 }
