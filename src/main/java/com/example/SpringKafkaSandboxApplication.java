@@ -11,7 +11,6 @@ import org.springframework.kafka.core.KafkaTemplate;
 import java.util.UUID;
 
 @SpringBootApplication
-@EnableKafka
 public class SpringKafkaSandboxApplication implements CommandLineRunner {
 
 	// un producer kafka de spring-kafka
